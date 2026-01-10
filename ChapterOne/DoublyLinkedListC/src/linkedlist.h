@@ -13,12 +13,13 @@ typedef struct Node{
     struct Node *next;
 } Node;
 
-List *list_create(Node *head);
 Node *node_create(char *value);
-void node_add(List *list, char *value);
 void node_free(Node *node);
-void node_remove(List *list, char *value);
-bool node_find(List *list, char *value);
+
+List *list_create(char *value);
+void list_add(List *list, char *value);
+void list_remove(List *list, char *value);
+bool list_find(List *list, char *value);
 void list_print(List *list);
 void list_free(List *list);
 

@@ -4,12 +4,6 @@
 #include<string.h>
 #include"linkedlist.h"
 
-List *list_create(Node *head){
-    List *return_list = malloc(sizeof(struct List));
-    return_list->head = head;
-    
-    return return_list;
-}
 
 Node *node_create(char *value) {
     Node *return_node = malloc(sizeof(struct Node));
@@ -26,6 +20,13 @@ void node_free(Node *node){
     return;
 }
 
+List *list_create(char *value){
+    List *return_list = malloc(sizeof(struct List));
+    return_list->head = node_create(value);
+    
+    return return_list;
+}
+
 void list_free(List *list) {
     Node *head_reference = list->head;
     
@@ -37,14 +38,9 @@ void list_free(List *list) {
 
     // Loop Through List
     while (head_reference != NULL) {
-        // Check If At Last Node
-        if (head_reference->next == NULL) {
-            node_free(head_reference);
-            break;
-        }
-        // If Not Last Node Move Head Reference & Free Prev
+        Node *temp = head_reference;
         head_reference = head_reference->next;
-        node_free(head_reference->prev);
+        node_free(temp);
     }
     
     // Free List
@@ -52,7 +48,7 @@ void list_free(List *list) {
     return;
 }
 
-void node_add(List *list, char *value) {
+void list_add(List *list, char *value) {
     Node *return_node = node_create(value);
     Node *head_reference = list->head;
 
@@ -66,7 +62,7 @@ void node_add(List *list, char *value) {
     return;
 }
 
-void node_remove(List *list, char *value) {
+void list_remove(List *list, char *value) {
     Node *head_reference = list->head;
 
     while (head_reference != NULL) {
@@ -102,7 +98,7 @@ void node_remove(List *list, char *value) {
     return;
 }
 
-bool node_find(List *list, char *value) {
+bool list_find(List *list, char *value) {
     Node *head_reference = list->head;
 
     // Loop Through List
