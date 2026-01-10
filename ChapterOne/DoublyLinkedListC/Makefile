@@ -1,5 +1,5 @@
-main: main.o linkedlist.o
-	gcc main.o linkedlist.o -o main
+test: main.o linkedlist.o
+	gcc main.o linkedlist.o -o test
 
 main.o: src/main.c src/linkedlist.h
 	gcc -c src/main.c
