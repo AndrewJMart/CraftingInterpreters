@@ -19,6 +19,7 @@ void node_add(List *list, char *value);
 void node_free(Node *node);
 void node_remove(List *list, char *value);
 bool node_find(List *list, char *value);
+void list_print(List *list);
 
 
 #endif

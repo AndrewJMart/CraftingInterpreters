@@ -89,3 +89,17 @@ bool node_find(List *list, char *value) {
     return false;
 }
 
+void print_list(List *list) {
+    Node *head_reference = list->head;
+
+    if (head_reference == NULL) {
+        printf("The List Is Empty\n");
+        return;
+    }
+    int node_counter = 0;
+    while (head_reference != NULL) {
+        printf("Node: %d, Node Address: %p, Node Value: %s\n", node_counter, (void *)head_reference, head_reference->value); 
+    }
+    return;
+}
+
