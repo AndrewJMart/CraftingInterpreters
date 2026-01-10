@@ -26,6 +26,32 @@ void node_free(Node *node){
     return;
 }
 
+void list_free(List *list) {
+    Node *head_reference = list->head;
+    
+    // Empty List
+    if (head_reference == NULL) {
+        free(list);
+        return;
+    }
+
+    // Loop Through List
+    while (head_reference != NULL) {
+        // Check If At Last Node
+        if (head_reference->next == NULL) {
+            node_free(head_reference);
+            break;
+        }
+        // If Not Last Node Move Head Reference & Free Prev
+        head_reference = head_reference->next;
+        node_free(head_reference->prev);
+    }
+    
+    // Free List
+    free(list);
+    return;
+}
+
 void node_add(List *list, char *value) {
     Node *return_node = node_create(value);
     Node *head_reference = list->head;
@@ -89,7 +115,7 @@ bool node_find(List *list, char *value) {
     return false;
 }
 
-void print_list(List *list) {
+void list_print(List *list) {
     Node *head_reference = list->head;
 
     if (head_reference == NULL) {
@@ -98,8 +124,10 @@ void print_list(List *list) {
     }
     int node_counter = 0;
     while (head_reference != NULL) {
-        printf("Node: %d, Node Address: %p, Node Value: %s\n", node_counter, (void *)head_reference, head_reference->value); 
+        printf("Node: %d, Node Address: %p, Node Value: %s\n", node_counter, (void *)head_reference, head_reference->value);
+        head_reference = head_reference->next;
     }
     return;
 }
+
 

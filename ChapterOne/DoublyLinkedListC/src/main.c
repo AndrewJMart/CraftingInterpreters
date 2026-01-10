@@ -4,14 +4,16 @@
 #include"linkedlist.h"
 
 int main() {
+    
+    // Test 1: Create List/Node & Print
     char *test_string = malloc(6);
     strcpy(test_string, "Heelo");
 
-    printf("%s", test_string);
+    List *list_1 = list_create(node_create(test_string));
 
-    Node *test_node = node_create(test_string);
+    list_print(list_1);
 
-    printf("%s", test_node->value);
+    list_free(list_1);
 
     return 1;
 }
