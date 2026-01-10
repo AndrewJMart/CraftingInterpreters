@@ -7,6 +7,11 @@ main.o: src/main.c src/linkedlist.h
 linkedlist.o: src/linkedlist.c src/linkedlist.h
 	gcc -c src/linkedlist.c
 
-clean: main main.o linkedlist.o
+clean:
 	rm main.o 
 	rm linkedlist.o
+
+purge:
+	rm main.o
+	rm linkedlist.o
+	rm main
