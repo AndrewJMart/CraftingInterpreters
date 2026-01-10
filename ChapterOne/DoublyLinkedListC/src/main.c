@@ -15,7 +15,7 @@ int main() {
 
     list_free(list_1);
 
-    // Test 2: Add 2 Nodes To Empty List
+    // Test 2: Add 2 Nodes To Empty List Then Remove
     char *test_21 = malloc(6);
     char *test_22 = malloc(6);
 
@@ -24,6 +24,14 @@ int main() {
 
     List *test_2_list = list_create(test_21);
     list_add(test_2_list, test_22);
+
+    list_print(test_2_list);
+
+    list_remove(test_2_list, test_21);
+    
+    list_print(test_2_list);
+
+    list_remove(test_2_list, test_22);
 
     list_print(test_2_list);
 
